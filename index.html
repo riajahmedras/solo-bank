@@ -32,7 +32,7 @@
          <div class="col-md-4">
             <div class="status withdraw">
                <h2>Withdraw</h2>
-               <h5>$0.00</h5>
+               <h5>$ <span id="withdrawValue">0.00</span></h5>
             </div>
          </div>
          <div class="col-md-4">
@@ -79,7 +79,14 @@
       withdrawbtn.addEventListener("click", function () {
          const withdrawAmount = document.getElementById("withdrawAmount").value;
          const withdrawAmountNum = parseFloat(withdrawAmount);
-         
+
+         const withdrawValue = document.getElementById("withdrawValue").innerText;
+         document.getElementById("withdrawValue").innerText = withdrawAmountNum;
+
+         spanTextUpdate("currentBalance", -1* withdrawAmountNum);
+
+         document.getElementById("withdrawAmount").value = "";
+
       });
       // Add click event on submit area.
       const depositButton = document.getElementById("depositButton");
